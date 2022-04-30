@@ -1,0 +1,18 @@
+patient sign up and login
+doctor sign up and login
+only doctor can make records
+sign up for hospitals and appointment for doctors in hospitols
+get all records of patient by their address 
+get records of patient by their address and date time 
+get records of patient by disease.
+
+appointment section for patient to take appointments and show at hospitals.
+
+all doctor's fee will be paid in ether.
+
+get a list of hospitals from backend and then search specific on frontend and book appointment.
+
+same for doctors as well.
+
+
+
