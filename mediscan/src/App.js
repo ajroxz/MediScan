@@ -92,14 +92,14 @@ function App() {
   const appointment = async()=>{
     const {web3,contract} = web3Api;
     // const accounts = await web3Api.web3.eth.getAccounts();
-      // const withdrawAmout = web3.utils.toWei("2", "ether");
+      const withdrawAmout = web3.utils.toWei("0.2", "ether");
      
       await contract.appointment({
 
         
        from : account,
 
-       value : 2
+       value : withdrawAmout
        
   
         
@@ -107,11 +107,22 @@ function App() {
     
   }
 
+  const createReport = async()=>{
+    const {web3,contract} = web3Api;
+
+
+    await contract.createReport("0x3f88e2e97FCDEAfBa12b64e2696d5A048EAD65Bc","he is good","111",{
+      from:account,
+      gas: 3000000
+    })
+  }
+
   const refund = async()=>{
     const {web3,contract} = web3Api;
 
     await contract.refund({
-      from : account
+      from : account,
+      gas: 3000000
     })
 
     
@@ -125,6 +136,13 @@ function App() {
       await contract.registerDoctor("Ashutosh Jha","male","india",1,"gg",{
         from : account
       })
+  }
+
+  const getReport = async()=>{
+
+    const {contract} = web3Api
+
+    await console.log(contract.getReport(account,"111",{from:account}))
   }
 
   // signUP();
@@ -151,6 +169,18 @@ function App() {
           &nbsp;
           <button type="button" className="btn btn-success " onClick={registerDoctor}>
             registerDoctor
+          </button>
+          &nbsp;
+
+          &nbsp;
+          <button type="button" className="btn btn-success " onClick={getReport}>
+            getReport
+          </button>
+          &nbsp;
+
+          &nbsp;
+          <button type="button" className="btn btn-success " onClick={createReport}>
+            createReport
           </button>
           &nbsp;
         </p>
