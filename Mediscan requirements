@@ -14,5 +14,14 @@ get a list of hospitals from backend and then search specific on frontend and bo
 
 same for doctors as well.
 
-
+Truffle v5.5.11 - a development framework for Ethereum
+ganache-2.5.4-linux-x86_64.AppImage
+ajroxz@ajroxz:~$ npm -v
+8.5.0
+ajroxz@ajroxz:~$ node -v
+v16.14.2
+ajroxz@ajroxz:~$ nodejs -v
+v12.22.5
+ajroxz@ajroxz:~$ npx -v
+8.5.0
 
