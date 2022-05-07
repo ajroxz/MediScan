@@ -107,6 +107,33 @@ function App() {
     
   }
 
+  const getPatient = async()=>{
+
+    const {web3,contract} = web3Api;
+
+    const response = await contract.getPatient(account,{
+      from:account,
+      gas: 3000000
+    }).then(result => console.log(result[0])).catch(e=>console.log(e))
+
+    
+
+  }
+
+  const getPatient_ = getPatient
+
+  
+
+  const registerPatient = async()=>{
+    const {web3,contract} = web3Api;
+
+    await contract.registerPatient("Narendra Modi",60,"AB-","Male","India",
+      {
+        from:account,
+        gas:3000000
+      })
+  }
+
   const createReport = async()=>{
     const {web3,contract} = web3Api;
 
@@ -181,6 +208,18 @@ function App() {
           &nbsp;
           <button type="button" className="btn btn-success " onClick={createReport}>
             createReport
+          </button>
+          &nbsp;
+
+          &nbsp;
+          <button type="button" className="btn btn-success " onClick={getPatient_}>
+            getPatient
+          </button>
+          &nbsp;
+
+          &nbsp;
+          <button type="button" className="btn btn-success " onClick={registerPatient}>
+            registerPatient
           </button>
           &nbsp;
         </p>

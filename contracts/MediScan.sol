@@ -101,6 +101,12 @@ contract MediScan{
 
     }
 
+    function getPatient(address _patient)public view returns(Patient memory){
+
+        return Patients[_patient];
+
+    }
+
     modifier check(address _patient){
         require(trans[_patient]>=Doctors[msg.sender].fee,"ether is not paid according to fees");
         _;
