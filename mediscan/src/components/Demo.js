@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import  ReactDOM  from "react-dom";
 import './demo.css';
 
+import App from "../App"
+
 
 
 const Demo = (props)=>{
@@ -23,22 +25,28 @@ const Demo = (props)=>{
         setUserRegistration({...userRegistration,[name]:value});
 
         console.log(userRegistration)
+
+        console.log(userRegistration.Name)
     }
 
-    const [records,setRecords] = useState([])
+    // const [records,setRecords] = useState([])
 
     const handleSubmit = (e)=>{
         e.preventDefault();
     
-        const newRecord = {...userRegistration,id:new Date().getTime().toString()}
+        // const newRecord = {...userRegistration,id:new Date().getTime().toString()}
+    
+        // // console.log(records);
+
+        // console.log(newRecord)
+    
+        // setRecords([...records,newRecord]);
     
         // console.log(records);
 
-        console.log(newRecord)
-    
-        setRecords([...records,newRecord]);
-    
-        console.log(records);
+        
+
+        props.fn(userRegistration.Name,userRegistration.Age,userRegistration.BloodGroup,userRegistration.Gender,userRegistration.Country);
 
 
         setUserRegistration({Name:"",Age:"",BloodGroup:"",Gender:"",Country:""})

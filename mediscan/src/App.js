@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
+import Demo from './components/Demo'
 
 function App() {
 
@@ -124,10 +125,20 @@ function App() {
 
   
 
-  const registerPatient = async()=>{
+  // const registerPatient = async()=>{
+  //   const {web3,contract} = web3Api;
+
+  //   await contract.registerPatient("Narendra Modi",60,"AB-","Male","India",
+  //     {
+  //       from:account,
+  //       gas:3000000
+  //     })
+  // }
+
+  async function registerPatient (Name,Age,BloodGroup,Gender,Country){
     const {web3,contract} = web3Api;
 
-    await contract.registerPatient("Narendra Modi",60,"AB-","Male","India",
+    await contract.registerPatient(Name,Age,BloodGroup,Gender,Country,
       {
         from:account,
         gas:3000000
@@ -178,9 +189,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
+        <Demo fn = {registerPatient}/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
-
+          
           &nbsp;
           <button type="button" className="btn btn-success " onClick={appointment}>
             appointment
