@@ -38,23 +38,23 @@ function App() {
         console.error("Please install MetaMask!");
       }
 
-      if(contract.signUp){
-        console.log("working")
+      // if(contract.signUp){
+      //   console.log("working")
         
-        const ck = async()=>{
-          var a = await contract.checkBal()
+      //   const ck = async()=>{
+      //     var a = await contract.checkBal()
 
-          console.log(a)
-        }
+      //     console.log(a)
+      //   }
 
-        ck();
+      //   ck();
 
         
-      }
-      else
-      {
-        console.log("not working")
-      }
+      // }
+      // else
+      // {
+      //   console.log("not working")
+      // }
       // let provider = null;
       // if (window.ethereum) {
       //   provider = window.ethereum;
@@ -180,10 +180,16 @@ function App() {
 
     const {contract} = web3Api
 
-    await console.log(contract.getReport(account,"111",{from:account}))
+    await contract.getReport(account,"111",{from:account}).then((result)=>console.log(result)).catch((e)=>console.log(e))
   }
 
   // signUP();
+
+  const checkBal = async()=>{
+    const {contract} = web3Api
+
+    await contract.checkBal({from:account}).then((r)=>console.log(r.toString())).catch((e)=>console.log(e));
+  }
 
   return (
     <div className="App">
@@ -233,6 +239,11 @@ function App() {
           &nbsp;
           <button type="button" className="btn btn-success " onClick={registerPatient}>
             registerPatient
+          </button>
+          &nbsp;
+          &nbsp;
+          <button type="button" className="btn btn-success " onClick={checkBal}>
+            checkBal
           </button>
           &nbsp;
         </p>
