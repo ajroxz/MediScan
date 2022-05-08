@@ -198,7 +198,7 @@ function App() {
 
         <Demo fn = {registerPatient}/>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+         
           
           &nbsp;
           <button type="button" className="btn btn-success " onClick={appointment}>
@@ -247,14 +247,7 @@ function App() {
           </button>
           &nbsp;
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       
         
       </header>
 
