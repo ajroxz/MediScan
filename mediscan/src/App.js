@@ -1,10 +1,11 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
 import Demo from './components/Demo'
+import PatientForm from "./patientRegisterForm"
 
 function App() {
 
@@ -186,14 +187,10 @@ function App() {
   // signUP();
 
   return (
-    <div className="App">
+    <div className="App bg-red-200">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <Demo fn = {registerPatient}/>
+       <PatientForm/>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
-          
           &nbsp;
           <button type="button" className="btn btn-success " onClick={appointment}>
             appointment
@@ -236,15 +233,6 @@ function App() {
           </button>
           &nbsp;
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        
       </header>
 
      
