@@ -1,11 +1,15 @@
 import logo from './logo.svg';
-// import './App.css';
+
+ import './index.css';
 import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
 import Demo from './components/Demo'
 import PatientForm from "./patientRegisterForm"
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+
 
 function App() {
 
@@ -79,6 +83,8 @@ function App() {
     loadProvider();
   }, []);
 
+  
+
   useEffect(() => {
     const getAccount = async () => {
       const accounts = await web3Api.web3.eth.getAccounts();
@@ -91,7 +97,8 @@ function App() {
 
   // console.log(web3Api.web3)
 
-  const appointment = async()=>{
+  const appointment = async(Name,Age,BloodGroup,Gender,Country)=>{
+    console.log(Name)
     const {web3,contract} = web3Api;
     // const accounts = await web3Api.web3.eth.getAccounts();
       const withdrawAmout = web3.utils.toWei("0.2", "ether");
@@ -102,11 +109,7 @@ function App() {
        from : account,
 
        value : withdrawAmout
-       
-  
-        
       });
-    
   }
 
   const getPatient = async()=>{
@@ -138,7 +141,7 @@ function App() {
 
   async function registerPatient (Name,Age,BloodGroup,Gender,Country){
     const {web3,contract} = web3Api;
-
+    console.log(Name)
     await contract.registerPatient(Name,Age,BloodGroup,Gender,Country,
       {
         from:account,
@@ -184,10 +187,11 @@ function App() {
     await console.log(contract.getReport(account,"111",{from:account}))
   }
 
+  
   // signUP();
 
   return (
-    <div className="App bg-red-200">
+    <div className="App">
       <header className="App-header">
        <PatientForm/>
         <p>
@@ -241,3 +245,6 @@ function App() {
 }
 
 export default App;
+
+
+
