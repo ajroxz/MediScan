@@ -77,19 +77,21 @@ function Doctor() {
   // console.log(web3Api.web3)
 
  
-  const registerDoctor = async(name,gender,country,age,bloodGroup)=>{
+  const registerDoctor = async(name,gender,country,fee,type)=>{
 
     const {contract} = web3Api
-    await contract.registerDoctor("Ashutosh Jha","male","india",1,"gg",{
-      from : account
+    await contract.registerDoctor(name,gender,country,fee,type,{
+      from : account,
+      gas:3000000
+
     })
 }
   let [data, setData] = useState({
     name: "",
-    age: "",
-    bloodGroup: "",
     gender: "",
     country: "",
+    fee: 0,
+    type: ""
   });
 
   const handleChange = (e) => {
@@ -99,7 +101,7 @@ function Doctor() {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    registerDoctor(data.name,data.gender,data.country,data.age,data.bloodGroup)
+    registerDoctor(data.name,data.gender,data.country,data.fee,data.type)
     console.log(data);
   };
   
@@ -110,10 +112,10 @@ function Doctor() {
       <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Register Doctor</p>
       <label id="name" className="text-xs text-gray-600 px1 py1">Name</label>
       <input required type="text" placeholder="Doctor Name" onChange={handleChange} id="name" value ={data.name} className="input-field mb-2 px3 py3 rounded outline-none border"/>
-      <label id="name" className="text-xs text-gray-600 px1 py1">Age</label>
-      <input required type="number" placeholder="Enter Age" onChange={handleChange} id="age" value ={data.age} className="mb-2 px3 py3 rounded outline-none border"/>
-      <label id="name" className="text-xs text-gray-600 px1 py1">Blood Group</label>
-      <input required type="text" placeholder="Enter Blood Group" onChange={handleChange} id="bloodGroup" value ={data.bloodGroup} className="mb-2 px3 py3 rounded outline-none border"/>
+      <label id="name" className="text-xs text-gray-600 px1 py1">Fee</label>
+      <input required type="number" placeholder="Enter fees" onChange={handleChange} id="fee" value ={data.fee} className="mb-2 px3 py3 rounded outline-none border"/>
+      <label id="name" className="text-xs text-gray-600 px1 py1">Type</label>
+      <input required type="text" placeholder="Enter type" onChange={handleChange} id="type" value ={data.type} className="mb-2 px3 py3 rounded outline-none border"/>
       <label id="name" className="text-xs text-gray-600 px1 py1">Gender</label>
       <input required type="text" placeholder="Enter Gender" onChange={handleChange} id="gender"  value ={data.gender} className="mb-2 px3 py3 rounded outline-none border"/>
       <label id="name" className="text-xs text-gray-600 px1 py1">Country</label>
