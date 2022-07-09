@@ -13,6 +13,7 @@ import Doctor from './DoctorRegistration';
 import CreateReport from './createReport';
 import Appointment from './appointment';
 import GetReport from './getReport';
+import Refund from './refund';
 
 
 
@@ -27,6 +28,7 @@ function App() {
                   <Route path = '/createreport' element={<CreateReport/>}/>
                   <Route path = '/appointment' element={<Appointment/>}/>
                   <Route path = '/getreport' element={<GetReport/>}/>
+                  <Route path = '/getrefund' element={<Refund/>}/>
 
             </Routes>
      </Router>

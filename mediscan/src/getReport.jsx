@@ -63,6 +63,12 @@ function GetReport() {
 
   // console.log(web3Api.web3)
 
+  let [data, setData] = useState({
+    address: "",
+    date:"",
+    report:""
+  });
+
   async function getReport (address,date){
 
         const {web3,contract} = web3Api;
@@ -70,7 +76,10 @@ function GetReport() {
         await contract.getReport(address,date,{
           from:account,
           gas: 3000000
-        }).then(result => console.log(result)).catch(e=>console.log(e))
+        }).then(result => {
+            data['report'] = result
+            setData({...data,['report']:result})
+        }).catch(e=>console.log(e))
  
         // await contract.createReport("0x3f88e2e97FCDEAfBa12b64e2696d5A048EAD65Bc","he is good","111",{
         //     from:account,
@@ -79,10 +88,7 @@ function GetReport() {
       
   } 
 
-  let [data, setData] = useState({
-    address: "",
-    date:""
-  });
+  
 
   const handleChange = (e) => {
     data[e.target.id] = e.target.value
@@ -100,15 +106,19 @@ function GetReport() {
    
     <div className="flex justify-center">
       <form className="flex flex-col bg-white p-8 m-20 w-96 shadow-xl rounded form-data" >
-      <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Create Report</p>
+      <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Get Report</p>
       <label id="name" className="text-xs text-gray-600 px1 py1">Address</label>
       <input required type="text" placeholder="Enter Address" onChange={handleChange} id="address" value ={data.address} className="input-field mb-2 px3 py3 rounded outline-none border"/>
       <label id="name" className="text-xs text-gray-600 px1 py1">date</label>
       <input required type="text" placeholder="Enter Date" onChange={handleChange} id="date" value ={data.date} className="mb-2 px3 py3 rounded outline-none border"/>
-     
       <input required type="submit" onClick={handleSubmit} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase"/>
-      {/* <h5 className="text-m text-gray-600 px1 py1" >Are you doctor?  <Link to="/doctor">click Here!</Link></h5> */}
+      
       </form>
+
+
+
+
+      <p>{data['report']}</p>
     
     </div>
   );

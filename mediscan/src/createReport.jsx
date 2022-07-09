@@ -105,12 +105,12 @@ function CreateReport() {
       <label id="name" className="text-xs text-gray-600 px1 py1">Address</label>
       <input required type="text" placeholder="Enter Address" onChange={handleChange} id="address" value ={data.address} className="input-field mb-2 px3 py3 rounded outline-none border"/>
       <label id="name" className="text-xs text-gray-600 px1 py1">report</label>
-      <input required type="text" placeholder="Enter Report" onChange={handleChange} id="report" value ={data.report} className="mb-2 px3 py3 rounded outline-none border"/>
+      <textarea required type="textarea" placeholder="Enter Report" onChange={handleChange} id="report" value ={data.report} className="mb-2 px3 py3 rounded outline-none border"/>
       <label id="name" className="text-xs text-gray-600 px1 py1">date</label>
       <input required type="text" placeholder="Enter Date" onChange={handleChange} id="date" value ={data.date} className="mb-2 px3 py3 rounded outline-none border"/>
      
       <input required type="submit" onClick={handleSubmit} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase"/>
-      {/* <h5 className="text-m text-gray-600 px1 py1" >Are you doctor?  <Link to="/doctor">click Here!</Link></h5> */}
+      
       </form>
     
     </div>

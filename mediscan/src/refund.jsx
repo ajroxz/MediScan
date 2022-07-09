@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom';
 
   
 
-function Appointment() {
+function Refund() {
   
   const [web3Api, setWeb3Api] = useState({
     provider: null,
@@ -63,25 +63,15 @@ function Appointment() {
 
   // console.log(web3Api.web3)
 
-  async function appointment (val){
+
+  async function refund (){
 
         const {web3,contract} = web3Api;
 
-        // await contract.appointment({
-        //   from:account,
-        //   gas: 3000000,
-        //   value : val
-        // })
-
-        const withdrawAmout = web3.utils.toWei(val, "ether");
-     
-      await contract.appointment({
-       from : account,
-       gas: 3000000,
-       value : withdrawAmout
-      });
-
-        console.log(val);
+        await contract.refund({
+            from : account,
+            gas: 3000000
+          })
  
         // await contract.createReport("0x3f88e2e97FCDEAfBa12b64e2696d5A048EAD65Bc","he is good","111",{
         //     from:account,
@@ -90,39 +80,20 @@ function Appointment() {
       
   } 
 
-  let [data, setData] = useState({
-    value : 0
-  });
-
-  const handleChange = (e) => {
-    data[e.target.id] = e.target.value
-    setData({...data, [e.target.id]:e.target.value})
-    console.log(data)
-  };
-
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    appointment(data.value)
-    console.log(data);
-  };
+  
   
   return (
    
     <div className="flex justify-center">
-      <form className="flex flex-col bg-white p-8 m-20 w-96 shadow-xl rounded form-data" >
-      <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Send fees</p>
-      <label id="name" className="text-xs text-gray-600 px1 py1">Amount</label>
-      <input required type="text" placeholder="Enter Amount" onChange={handleChange} id="value" value ={data.address} className="input-field mb-2 px3 py3 rounded outline-none border"/>
       
-      <input required type="submit" onClick={handleSubmit} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase"/>
-      {/* <h5 className="text-m text-gray-600 px1 py1" >Are you doctor?  <Link to="/doctor">click Here!</Link></h5> */}
-      </form>
+      <button required type="get refund" onClick={refund} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase">Get Refund</button>
+      
     
     </div>
   );
 }
 
-export default Appointment;
+export default Refund;
 
 
 
