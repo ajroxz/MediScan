@@ -7,8 +7,9 @@ import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
 import {Link} from 'react-router-dom';
-
-  
+import NavBar from "./navbar";
+import Footer from "./footer";
+import reportIcon from "./reportTemplate.png"
 
 function GetReport() {
   
@@ -95,15 +96,31 @@ function GetReport() {
     setData({...data, [e.target.id]:e.target.value})
     console.log(data)
   };
-
+  const [showResults, setShowResults] = React.useState(false)
   const handleSubmit = async(e) => {
     e.preventDefault()
     getReport(data.address,data.date)
+    setShowResults(true)
     console.log(data);
   };
   
+  const Reports = () => (
+    <div className="flex justify-center">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg" >
+  <img class="w-full" src={reportIcon} alt="Report Icon"/>
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2">Your Report</div>
+    <p class="text-gray-700 text-base">
+    {data['report']}
+    </p>
+  </div>
+</div>
+</div>
+  )
+  
   return (
-   
+    <div>
+    <NavBar/>
     <div className="flex justify-center">
       <form className="flex flex-col bg-white p-8 m-20 w-96 shadow-xl rounded form-data" >
       <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Get Report</p>
@@ -114,12 +131,10 @@ function GetReport() {
       <input required type="submit" onClick={handleSubmit} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase"/>
       
       </form>
-
-
-
-
-      <p>{data['report']}</p>
-    
+    </div>
+   
+    { showResults ? <Reports /> : null }
+    <Footer/>
     </div>
   );
 }

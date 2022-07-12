@@ -144,18 +144,11 @@ contract MediScan{
     string[] x;
 
     function history(address _patient) public returns(string[] memory){
-
-       
-
        for(uint i =0;i<Reports[_patient].length;i++)
        {
            x.push(Reports[_patient][i].report);
        }
-
        return x;
 
    }
-
-
-
 }

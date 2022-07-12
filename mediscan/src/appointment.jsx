@@ -7,6 +7,8 @@ import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
 import {Link} from 'react-router-dom';
+import NavBar from "./navbar";
+import Footer from "./footer";
 
   
 
@@ -107,7 +109,8 @@ function Appointment() {
   };
   
   return (
-   
+    <div>
+    <NavBar/>
     <div className="flex justify-center">
       <form className="flex flex-col bg-white p-8 m-20 w-96 shadow-xl rounded form-data" >
       <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Send fees</p>
@@ -118,6 +121,8 @@ function Appointment() {
       {/* <h5 className="text-m text-gray-600 px1 py1" >Are you doctor?  <Link to="/doctor">click Here!</Link></h5> */}
       </form>
     
+    </div>
+    <Footer/>
     </div>
   );
 }

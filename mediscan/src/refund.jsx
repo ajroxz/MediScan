@@ -7,6 +7,8 @@ import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
 import {Link} from 'react-router-dom';
+import NavBar from "./navbar";
+import Footer from "./footer";
 
   
 
@@ -83,12 +85,27 @@ function Refund() {
   
   
   return (
-   
+    <div>
+    <NavBar/>
     <div className="flex justify-center">
       
       <button required type="get refund" onClick={refund} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase">Get Refund</button>
       
     
+    </div>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <Footer/>
     </div>
   );
 }

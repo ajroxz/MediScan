@@ -7,6 +7,8 @@ import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
 import {Link} from 'react-router-dom';
+import NavBar from "./navbar";
+import Footer from "./footer";
 
   
 
@@ -98,7 +100,8 @@ function CreateReport() {
   };
   
   return (
-   
+    <div>
+    <NavBar/>
     <div className="flex justify-center">
       <form className="flex flex-col bg-white p-8 m-20 w-96 shadow-xl rounded form-data" >
       <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Create Report</p>
@@ -113,6 +116,8 @@ function CreateReport() {
       
       </form>
     
+    </div>
+    <Footer/>
     </div>
   );
 }
