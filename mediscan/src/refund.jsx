@@ -12,7 +12,7 @@ import Footer from "./footer";
 
   
 
-function CreateReport() {
+function Refund() {
   
   const [web3Api, setWeb3Api] = useState({
     provider: null,
@@ -65,14 +65,15 @@ function CreateReport() {
 
   // console.log(web3Api.web3)
 
-  async function createReport (address,report,date){
+
+  async function refund (){
 
         const {web3,contract} = web3Api;
 
-        await contract.createReport(address,report,date,{
-          from:account,
-          gas: 3000000
-        })
+        await contract.refund({
+            from : account,
+            gas: 3000000
+          })
  
         // await contract.createReport("0x3f88e2e97FCDEAfBa12b64e2696d5A048EAD65Bc","he is good","111",{
         //     from:account,
@@ -81,48 +82,35 @@ function CreateReport() {
       
   } 
 
-  let [data, setData] = useState({
-    address: "",
-    report: "",
-    date:""
-  });
-
-  const handleChange = (e) => {
-    data[e.target.id] = e.target.value
-    setData({...data, [e.target.id]:e.target.value})
-    console.log(data)
-  };
-
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    createReport(data.address,data.report,data.date)
-    console.log(data);
-  };
+  
   
   return (
     <div>
     <NavBar/>
     <div className="flex justify-center">
-      <form className="flex flex-col bg-white p-8 m-20 w-96 shadow-xl rounded form-data" >
-      <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Create Report</p>
-      <label id="name" className="text-xs text-gray-600 px1 py1">Address</label>
-      <input required type="text" placeholder="Enter Address" onChange={handleChange} id="address" value ={data.address} className="input-field mb-2 px3 py3 rounded outline-none border"/>
-      <label id="name" className="text-xs text-gray-600 px1 py1">report</label>
-      <textarea required type="textarea" placeholder="Enter Report" onChange={handleChange} id="report" value ={data.report} className="mb-2 px3 py3 rounded outline-none border"/>
-      <label id="name" className="text-xs text-gray-600 px1 py1">date</label>
-      <input required type="text" placeholder="Enter Date" onChange={handleChange} id="date" value ={data.date} className="mb-2 px3 py3 rounded outline-none border"/>
-     
-      <input required type="submit" onClick={handleSubmit} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase"/>
       
-      </form>
+      <button required type="get refund" onClick={refund} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase">Get Refund</button>
+      
     
     </div>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
     <Footer/>
     </div>
   );
 }
 
-export default CreateReport;
+export default Refund;
 
 
 

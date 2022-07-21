@@ -7,6 +7,8 @@ import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
 import {Link} from 'react-router-dom';
+import NavBar from "./navbar";
+import Footer from "./footer";
 
 
 function Doctor() {
@@ -106,7 +108,8 @@ function Doctor() {
   };
   
   return (
-   
+    <div>
+    <NavBar/>
     <div className="flex justify-center">
       <form className="flex flex-col bg-white p-8 m-20 w-96 shadow-xl rounded form-data" >
       <p className="h-2 my-5 text-center uppercase font-semibold text-cyan-500 shadow-lg">Register Doctor</p>
@@ -123,6 +126,8 @@ function Doctor() {
       <input required type="submit" onClick={handleSubmit} className="rounded shadow-xl bg-cyan-300 px-6 py3 hover:bg-cyan-400 cursor-pointer my-2 border border-cyan-300 transition-all duration-300 text-white uppercase"/>
       <h5 className="text-m text-gray-600 px1 py1" >Are you Patient?  <Link to="/">click Here!</Link></h5>
       </form>
+    </div>
+    <Footer/>
     </div>
   );
 }
